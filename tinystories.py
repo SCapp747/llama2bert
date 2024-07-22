@@ -222,7 +222,7 @@ class PretokDataset(torch.utils.data.IterableDataset):
                     start = ix * self.max_seq_len
                     end = start + self.max_seq_len
                     # calling .astype will copy the data into a new numpy array, now in RAM
-                    x = torch.from_numpy(mask((m[start:end]).astype(np.int64)))
+                    x = torch.from_numpy(mask((m[start:end]).astype(np.int64), mask_token))
                     y = torch.from_numpy((m[start:end]).astype(np.int64))
                     yield x, y
 
